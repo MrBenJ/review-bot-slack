@@ -15,6 +15,48 @@ This is still in progress. don't mind the dust!
 
 * A server to deploy this on.
 * A MongoDB database with user, URL, and password
+* Github repo(s) to watch
+
+## Setting up
+
+You will need both the **server**, **Github Webhooks**, and **Slack integration** all set up for this to work.
+
+### Server setup
+
+1. On the server you'd like this to run on, clone this repository.
+2. Install dependencies with `npm install`.
+3. Build the project with `npm build`.
+4. Run the server with `npm start`.
+
+**Note:** Take note of the URL of your server, you'll need this for the Github Webhook Setup
+
+### Github Webhook Setup
+
+1. On the git repo you'd like to watch on PR's for, click **Settings** => **Webhooks** =>
+2. Click **Add Webhook** at the top right corner
+3. Enter your Github credentials if asked for them.
+4. Enter the server URL from the **Server Setup** step and append `/review` to the end of it in the "Payload URL" field:
+
+Examples
+```
+URL: http://192.168.0.1:3000
+Payload URL: http://192.168.0.1:3000/review
+
+URL: https://www.my-awesome-server.com
+Payload URL: https://www.my-awesome-server.com/review
+```
+
+5. Under **Content type** choose `application/json`
+6. Click the radio button next to **Let me select individual events** or **Send me everything**
+7. If you choose **Let me select individual events**, make sure the **Pull Requests** option has been selected.
+
+**Important:** This bot will only read "Pull Request" events, and ignore everything else.
+
+### Slack Integration Setup
+
+Coming soon! Need to figure out the other things first...
+
+
 
 ## Development Setup
 
@@ -26,13 +68,14 @@ This is still in progress. don't mind the dust!
 ### Setting up your local dev environment
 
 1. Clone the repo
-2. Install dependencies with `npm i`
+2. Install dependencies with `npm install`
 3. Create a `.env` file in the root directory. You'll need to create the following values:
 
 ```sh
 REVIEW_BOT_MONGODB_URL=YOUR.MONGODB.URL.HERE
 REVIEW_BOT_MONGODB_USERNAME=YOUR.MONGODB.USERNAME.HERE
 REVIEW_BOT_MONGODB_PW=YOUR.MONGODB.PASSWORD.HERE
+REVIEW_BOT_SLACK_CREDENTIALS=YOUR.SLACK.INFO.HERE
 ```
 
 ### Technology Used
