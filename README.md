@@ -19,7 +19,7 @@ This is still in progress. don't mind the dust!
 
 ## Setting up
 
-You will need both the **server**, **Github Webhooks**, and **Slack integration** all set up for this to work.
+You will need the **server**, **Github Webhooks**, and **Slack integration** all set up for this to work.
 
 ### Server setup
 
@@ -32,7 +32,7 @@ You will need both the **server**, **Github Webhooks**, and **Slack integration*
 
 ### Github Webhook Setup
 
-1. On the git repo you'd like to watch on PR's for, click **Settings** => **Webhooks** =>
+1. On the git repo you'd like to watch on PR's for, click **Settings** => **Webhooks**
 2. Click **Add Webhook** at the top right corner
 3. Enter your Github credentials if asked for them.
 4. Enter the server URL from the **Server Setup** step and append `/review` to the end of it in the "Payload URL" field:
