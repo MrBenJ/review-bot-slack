@@ -1,20 +1,20 @@
-import express from 'express';
+import { Router, Request, Response } from 'express';
 
-const router = express.Router();
+const router: Router = Router();
 
-router.get('/:id', (req, res) => {
+router.get('/:id', (req: Request, res: Response) => {
   // Get a user by their id
 });
 
-router.post('/', (req, res) => {
+router.post('/', (req: Request, res: Response) => {
   // Create a user
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', (req: Request, res: Response) => {
   // Edit a user
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', (req: Request, res: Response) => {
   // Removes a user
 });
 

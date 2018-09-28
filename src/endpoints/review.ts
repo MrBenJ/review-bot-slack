@@ -1,8 +1,8 @@
-import express from 'express';
+import { Router, Request, Response } from 'express';
 
-const router = express.Router();
+const router: Router = Router();
 
-router.post('/', (req, res) => {
+router.post('/', (req: Request, res: Response) => {
   // on Github POST action
 });
 

@@ -1,12 +1,12 @@
-import express from 'express';
+import { Router, Request, Response } from 'express';
 
-const router = express.Router();
+const router: Router = Router();
 
-router.get('/:id', (req, res) => {
+router.get('/:id', (req: Request, res: Response) => {
 
 });
 
-router.post('/', (req, res) => {
+router.post('/', (req: Request, res: Response) => {
 
 });
 
