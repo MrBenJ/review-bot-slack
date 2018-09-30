@@ -9,7 +9,7 @@ ReviewBot cannot fix all of your problems, but it can make this one aspect of yo
 
 This project was started with `typescript-babel-starter`.
 
-This is still in progress. don't mind the dust!
+This little project is still an active work in progress. don't mind the dust!
 
 ## Prerequisites
 
@@ -57,7 +57,6 @@ Payload URL: https://www.my-awesome-server.com/review
 Coming soon! Need to figure out the other things first...
 
 
-
 ## Development Setup
 
 ### Development Requirements
@@ -77,6 +76,12 @@ REVIEW_BOT_MONGODB_USERNAME=YOUR.MONGODB.USERNAME.HERE
 REVIEW_BOT_MONGODB_PW=YOUR.MONGODB.PASSWORD.HERE
 REVIEW_BOT_SLACK_CREDENTIALS=YOUR.SLACK.INFO.HERE
 ```
+
+### NPM Scripts
+
+* **npm start** - Starts the application
+* **npm run build** - Builds the application for production
+* **npm run dev** - Starts the application in development mode.
 
 ### Technology Used
 
