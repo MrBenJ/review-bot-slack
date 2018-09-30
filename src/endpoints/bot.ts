@@ -3,28 +3,27 @@ import { reply } from '../util';
 
 const router: Router = Router();
 
-router.post('/', async (req: Request, res: Response) => {
-  try {
-    const { challenge, type } = req.body;
+router.post('/', (req: Request, res: Response) => {
+  const { challenge, type, event } = req.body;
 
-    if (type === 'url_verification' && challenge) {
-      res.send({ challenge });
-      return;
-    }
-
-    const { event } = req.body;
-
-    console.log(event);
-    if (event.text.includes('config')) {
-      const { channel } = event;
-      await reply("Let's config!", channel);
-      res.sendStatus(200);
-
-    }
-  } catch (error) {
-    console.error(error);
+  // For URL Verification
+  if (type === 'url_verification' && challenge) {
+    res.send({ challenge });
+    return;
   }
-  
+
+  // If the message is from itself, ignore the message
+  if (event.bot_id) {
+    return;
+  }
+
+  console.log(event);
+  if (event.text.includes('config')) {
+    const { channel } = event;
+    reply("Let's do this!", channel);
+    res.sendStatus(200);
+    return;
+  }
 });
 
 export default router;

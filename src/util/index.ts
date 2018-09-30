@@ -5,15 +5,12 @@ type ReplyOptions = {
 };
 
 export function reply(message: string, channel: string): Promise<any> {
-  console.log('replying...');
-  console.log(message, channel);
-  console.log(process.env.SERVER_SLACK_BOT_TOKEN);
   return Axios.request({
     method: 'POST',
-    url: 'https://slack.com/api/chat.postmessage',
+    url: 'https://slack.com/api/chat.postMessage',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.SLACK_BOT_TOKEN}`
+      Authorization: `Bearer ${process.env.SERVER_SLACK_BOT_TOKEN}`
     },
     data: {
       text: message,

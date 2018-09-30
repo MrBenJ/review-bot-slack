@@ -21,6 +21,8 @@ app.use('/review', ReviewEndpoints);
 app.use('/config', ConfigEndpoints);
 app.use('/bot', BotEndpoints); 
 
-app.listen(3000, () => {
-  console.log('Listening on port 3000');
+const { SERVER_PORT = 3000 } = process.env
+
+app.listen(+SERVER_PORT, () => {
+  console.log(`Listening on port ${SERVER_PORT}`);
 });
