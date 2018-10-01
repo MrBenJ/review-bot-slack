@@ -17,10 +17,11 @@ type SlackPayload = {
   event: SlackEvent
 };
 
+const GREETINGS = ['HI', 'HELLO', 'HEY', 'SUP'];
 router.post('/', (req: Request, res: Response) => {
   const { challenge, type, event } = req.body;
   const { bot_id, channel, user, text } = event;
-  
+
   switch(true) {
 
     // URL Verification on Slack
@@ -33,11 +34,18 @@ router.post('/', (req: Request, res: Response) => {
       return;
     }
 
+    case (text.toUpperCase() === 'HELP'): {
+      reply("Here's how I can help you out:", channel);
+      reply('`config` -- Start the configuration process', channel);
+      res.sendStatus(200);
+      return;
+    }
+
     // Configure the bot
     case (text.includes('config')): {
       reply("Great! Enter your Github username starting with the `@` character:", channel);
       res.sendStatus(200);
-      return;  
+      return;
     }
 
     // Github username was entered
@@ -46,12 +54,27 @@ router.post('/', (req: Request, res: Response) => {
       const username: string = text.slice(1).trim();
       reply(`Got it. Your Github username is: ${username}`, channel);
       res.sendStatus(200);
-      return;  
+      return;
+    }
+
+    case (GREETINGS.includes(text.toUpperCase())): {
+      const GREETING_REPLIES = [
+        'Howdy!',
+        'Wazzzaaaaaap',
+        'Yo dawg!',
+        'Hello there!',
+        `Good to see you <@${user}> `
+      ];
+      const max = GREETING_REPLIES.length;
+      reply(GREETING_REPLIES[Math.floor(Math.random() * Math.floor(max))], channel);
+      res.sendStatus(200);
+      return;
     }
 
     default: {
       console.log(event);
       reply('Sorry, I do not understand how to repond to that :(', channel);
+      res.sendStatus(200);
       return;
     }
   }
