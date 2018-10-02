@@ -18,14 +18,15 @@ type SlackPayload = {
 };
 
 const GREETINGS = ['HI', 'HELLO', 'HEY', 'SUP'];
+const HELP_CMD = 'HELP';
 router.post('/', (req: Request, res: Response) => {
-  const { challenge, type, event } = req.body;
-  const { bot_id, channel, user, text } = event;
+  const { challenge, type, event = {} } = req.body;
+  const { bot_id, channel, user, text = '' } = event;
 
   switch(true) {
 
     // URL Verification on Slack
-    case (type === 'url_verification' && challenge): {
+    case (type === 'url_verification' && Boolean(challenge)): {
       res.send({ challenge });
       return;
     }
@@ -34,7 +35,7 @@ router.post('/', (req: Request, res: Response) => {
       return;
     }
 
-    case (text.toUpperCase() === 'HELP'): {
+    case (text.toUpperCase() === HELP_CMD): {
       reply("Here's how I can help you out:", channel);
       reply('`config` -- Start the configuration process', channel);
       res.sendStatus(200);
