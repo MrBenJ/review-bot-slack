@@ -1,4 +1,7 @@
 # ReviewBot
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/MrBenJ/review-bot-slack.svg)](https://greenkeeper.io/)
+
 # A free and open source review bot for Slack
 
 Tired of notifying your coworkers that they need to review your pull request? Hate all the noise in your #git channel on Slack?
